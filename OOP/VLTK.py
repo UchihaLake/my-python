@@ -18,6 +18,10 @@ class Gold:
     def name(self):
         return self.__sect_name
 
+    @property
+    def sect(self):
+        return self.__sect
+
 
 class Carpentry:
     def __init__(self):
@@ -40,6 +44,11 @@ class Carpentry:
         return self.__sect_name
 
 
+    @property
+    def sect(self):
+        return self.__sect
+
+
 class Water:
     def __init__(self):
         self.__sect_name = 'thuy'
@@ -59,6 +68,10 @@ class Water:
     @property
     def name(self):
         return self.__sect_name
+
+    @property
+    def sect(self):
+        return self.__sect
 
 
 class Fire:
@@ -81,6 +94,10 @@ class Fire:
     def name(self):
         return self.__sect_name
 
+    @property
+    def sect(self):
+        return self.__sect
+
 
 class Earth:
     def __init__(self):
@@ -102,22 +119,31 @@ class Earth:
     def name(self):
         return self.__sect_name
 
+    @property
+    def sect(self):
+        return self.__sect
+
 
 class Player:
     def __init__(self, level):
         self.__level = level
-        __inp = input('Player Sect:')
+        __inp = input('Player Element:')
         __inp = __inp.lower().strip()
         if __inp == 'hoa':
-            self.__sect = Fire()
+            self.__ele = Fire()
         elif __inp == 'kim':
-            self.__sect = Gold()
+            self.__ele = Gold()
         elif __inp == 'moc':
-            self.__sect = Carpentry()
+            self.__ele = Carpentry()
         elif __inp == 'thuy':
-            self.__sect = Water()
+            self.__ele = Water()
         elif __inp == 'tho':
-            self.__sect = Earth()
+            self.__ele = Earth()
+        __sect_ = []
+        for i, j in zip(range(len(self.__ele.sect)), self.__ele.sect):
+            __sect_.append(j)
+            print(str(i + 1) + '/' + str(__sect_[i]))
+        self.__sect = input('Player Sect:')
 
     @property
     def power(self):
@@ -125,7 +151,7 @@ class Player:
 
     @property
     def sect(self):
-        return self.__sect
+        return self.__ele
 
 
 class Monster:
@@ -160,6 +186,7 @@ class Monster:
 class Sect:
     @staticmethod
     def compare(obj1, obj2):
+        stat1, stat2 = 0, 0
         if obj1.sect.mutual_opposition(obj2.sect.name) == 2:
             stat1 = 0.2
             stat2 = -0.2
