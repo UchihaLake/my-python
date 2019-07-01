@@ -107,6 +107,7 @@ class Player:
     def __init__(self, level):
         self.__level = level
         __inp = input('Player Sect:')
+        __inp = __inp.lower().strip()
         if __inp == 'hoa':
             self.__sect = Fire()
         elif __inp == 'kim':
@@ -131,6 +132,7 @@ class Monster:
     def __init__(self, level):
         self.__level = level
         __inp = input('Monster Element:')
+        __inp = __inp.lower().strip()
         if __inp == 'hoa':
             self.__sect = Fire()
         elif __inp == 'kim':
