@@ -143,7 +143,9 @@ class Player:
         for i, j in zip(range(len(self.__ele.sect)), self.__ele.sect):
             __sect_.append(j)
             print(str(i + 1) + '/' + str(__sect_[i]))
-        self.__sect = input('Player Sect:')
+        __inp2 = int(input('Player Sect:'))
+        self.__sect = str(__sect_[__inp2 - 1])
+        print()
 
     @property
     def power(self):
@@ -210,5 +212,3 @@ if __name__ == '__main__':
     mon1 = Monster(m_lv)
     cmp = Sect()
     cmp.compare(player, mon1)
-
-
